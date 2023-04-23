@@ -1,4 +1,4 @@
-import { processModifiers } from "./processModifiers";
+import { processTag } from "./processTag";
 import { Chalk } from "chalk";
 
 export function parseNode(node: any, chalk: Chalk) {
@@ -7,12 +7,12 @@ export function parseNode(node: any, chalk: Chalk) {
   }
 
   if (node.type === "element") {
-    const color = node.tagName;
+    const tagName = node.tagName;
     const content = node.childNodes
       .map((node) => parseNode(node, chalk))
       .join("");
 
-    chalk = processModifiers(color, node.attributes, chalk);
+    chalk = processTag(tagName, node.attributes, chalk);
 
     return chalk(content);
   }

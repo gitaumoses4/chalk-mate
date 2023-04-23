@@ -2,12 +2,35 @@
   "name": "chalk-mate",
   "version": "1.0.0",
   "description": "An extension of the Chalk.js library that allows users to create stylized text using HTML templates.",
-  "author": "Moses Gitau",
+  "author": "Moses Gitau <gitaumoses4@gmail.com> (https://github.com/gitaumoses4)",
   "license": "MIT",
-  "repository": "gitaumoses4/chalk-mate",
+  "homepage": "https://github.com/gitaumoses4/chalk-mate",
+  "repository": "github:gitaumoses4/chalk-mate",
+  "bugs": "https://github.com/gitaumoses4/chalk-mate/issues",
   "type": "module",
+  "main": "lib/index.js",
+  "unpkg": "dist/index.js",
+  "module": "es/index.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "dist",
+    "es",
+    "lib",
+    "types"
+  ],
   "scripts": {
-    "test": "jest"
+    "clean": "rimraf lib dist es coverage types",
+    "format": "prettier --write \"{src,test}/**/*.{js,ts}\" \"**/*.md\"",
+    "format:check": " prettier --list-different src test",
+    "lint": "eslint --ext js,ts src test",
+    "check-types": "tsc --noEmit",
+    "test": "jest",
+    "test:watch": "npm test -- --watch",
+    "test:cov": "npm test -- --coverage",
+    "build": "del-cli dist && tsc",
+    "pretests": "npm run build",
+    "prepublishOnly": "npm run clean && npm run check-types && npm run format:check && npm run lint && npm test && npm run build",
+    "postpublish": "npm run clean"
   },
   "dependencies": {
     "chalk": "4.1.2",
@@ -15,6 +38,7 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.1",
+    "del-cli": "^5.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.1",
