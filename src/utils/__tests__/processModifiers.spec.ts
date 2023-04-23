@@ -44,14 +44,8 @@ describe("processModifiers", function () {
       .mockReturnValue(chalkInstance as any);
   });
 
-  it("should create a chalk instance with the level", () => {
-    processModifiers("red", {}, 2);
-
-    expect(chalk.Instance).toHaveBeenCalledWith({ level: 2 });
-  });
-
   it("should always process the foreground color", () => {
-    processModifiers("red", {}, 2);
+    processModifiers("red", {}, chalkInstance as any);
 
     expect(processForegroundColorSpy).toHaveBeenCalledWith(
       chalkInstance,
@@ -61,7 +55,7 @@ describe("processModifiers", function () {
   });
 
   it("should process the background color if there are attributes", () => {
-    processModifiers("red", { bg: "red" }, 2);
+    processModifiers("red", { bg: "red" }, chalkInstance as any);
 
     expect(processBackgroundColorSpy).toHaveBeenCalledWith(chalkInstance, {
       bg: "red",
@@ -69,7 +63,7 @@ describe("processModifiers", function () {
   });
 
   it("should process allowed modifiers if there are attributes", () => {
-    processModifiers("red", { bg: "red", bold: true, underline: true }, 2);
+    processModifiers("red", { bg: "red", bold: true, underline: true }, chalk);
 
     expect(chalkInstance.modifiers).toEqual(["bold", "underline"]);
   });

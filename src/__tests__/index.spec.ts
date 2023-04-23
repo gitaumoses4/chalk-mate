@@ -1,7 +1,11 @@
-import chalkMate from "../index";
+import { Instance } from "../index";
 import { colors } from "../utils/colors";
 
-const chalk = require("chalk");
+const ChalkInstance = require("chalk").Instance;
+
+const chalk = new ChalkInstance({ level: 2 });
+
+const chalkMate = Instance({ level: 2 });
 
 describe("chalkMate", function () {
   it("should handle properties with single quotes", () => {
@@ -38,7 +42,8 @@ describe("chalkMate", function () {
   it("should handle multiple tags", () => {
     expect(
       chalkMate(
-        `<red bg='yellow' bold>The quick brown fox jumped <green bg="white">over</green> the lazy dogs.</red> <blue bg="white">The quick brown fox jumped <green bg="white">over</green> the lazy dogs.</blue>`
+        `<red bg='yellow' bold>The quick brown fox jumped <green bg="white">over</green> the lazy dogs.</red> 
+<blue bg="white">The quick brown fox jumped <green bg="white">over</green> the lazy dogs.</blue>`
       )
     ).toEqual(
       chalk
@@ -49,7 +54,7 @@ describe("chalkMate", function () {
             .hex(colors.green)
             .bgHex(colors.white)(`over`)} the lazy dogs.`
         ) +
-        " " +
+        " \n" +
         chalk.hex(colors.blue).bgHex(colors.white)(
           `The quick brown fox jumped ${chalk
             .hex(colors.green)

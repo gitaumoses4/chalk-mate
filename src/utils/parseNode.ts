@@ -1,16 +1,18 @@
 import { processModifiers } from "./processModifiers";
-import { Level } from "chalk";
+import { Chalk } from "chalk";
 
-export function parseNode(node: any, colorLevel?: Level) {
+export function parseNode(node: any, chalk: Chalk) {
   if (node.type === "text") {
     return node.text;
   }
 
   if (node.type === "element") {
     const color = node.tagName;
-    const content = node.childNodes.map(parseNode).join("");
+    const content = node.childNodes
+      .map((node) => parseNode(node, chalk))
+      .join("");
 
-    const chalk = processModifiers(color, node.attributes, colorLevel);
+    chalk = processModifiers(color, node.attributes, chalk);
 
     return chalk(content);
   }
