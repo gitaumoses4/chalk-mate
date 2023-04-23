@@ -1,0 +1,53 @@
+{
+  "name": "chalk-mate",
+  "version": "1.0.0",
+  "description": "An extension of the Chalk.js library that allows users to create stylized text using HTML templates.",
+  "author": "Moses Gitau",
+  "license": "MIT",
+  "repository": "gitaumoses4/chalk-mate",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "chalk": "4.1.2",
+    "xml-parse": "^0.4.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "jest": "^29.5.0",
+    "prettier": "^2.4.1",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "keywords": [
+    "chalk",
+    "html",
+    "template",
+    "templates",
+    "templating",
+    "ansi",
+    "styles",
+    "color",
+    "colour",
+    "colors",
+    "terminal",
+    "console",
+    "string",
+    "tty",
+    "escape",
+    "formatting",
+    "rgb",
+    "256",
+    "shell",
+    "xterm",
+    "log",
+    "logging",
+    "command-line",
+    "text"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "strictPropertyInitialization": false,
+    "strictNullChecks": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "commonjs",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "types": ["node", "jest"],
+    "skipDefaultLibCheck": true,
+    "allowJs": true,
+    "baseUrl": ".",
+    "resolveJsonModule": true
+  },
+  "include": ["src"]
+}
