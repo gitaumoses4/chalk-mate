@@ -20,7 +20,6 @@
     "test": "jest",
     "test:watch": "npm test -- --watch",
     "test:cov": "npm test -- --coverage",
-    "test:ci": "npm run test:cov",
     "build": "npm run clean && tsc --project tsconfig.app.json",
     "pretests": "npm run build",
     "prepublishOnly": "npm run clean && npm run check-types && npm run format:check && npm run lint && npm test && npm run build",

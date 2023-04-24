@@ -38,7 +38,7 @@ jobs:
         run: npm run lint
 
       - name: Run test suite
-        run: npm test:ci
+        run: npm test:cov
 
       - name: Publish coverage
         uses: codacy/codacy-coverage-reporter-action@v1
