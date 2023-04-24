@@ -1,6 +1,6 @@
 import { processTag } from '../processTag'
-import * as processForegroundColor from '../processForegroundColor'
 import * as processBackgroundColor from '../processBackgroundColor'
+import * as processForegroundColor from '../processForegroundColor'
 
 class ChalkInstance {
   level = 1
@@ -47,13 +47,13 @@ describe('processTag', function () {
   it('should always process the foreground color', () => {
     processTag('red', {}, chalkInstance as any)
 
-    expect(processForegroundColorSpy).toHaveBeenCalledWith(chalkInstance, 'red', {})
+    expect(processForegroundColorSpy).toHaveBeenCalledWith(chalkInstance, 'red', '')
   })
 
   it('should process the background color if there are attributes', () => {
     processTag('red', { bg: 'red' }, chalkInstance as any)
 
-    expect(processBackgroundColorSpy).toHaveBeenCalledWith(chalkInstance, "red")
+    expect(processBackgroundColorSpy).toHaveBeenCalledWith(chalkInstance, 'red')
   })
 
   it('should process allowed modifiers if there are attributes', () => {
@@ -62,7 +62,14 @@ describe('processTag', function () {
     expect(chalkInstance.modifiers).toEqual(['bold', 'underline'])
   })
 
+  it('should process modifier as the tag name', () => {
+    processTag('bold', {}, chalk)
+
+    expect(chalkInstance.modifiers).toEqual(['bold'])
+  })
+
   afterEach(() => {
+    chalkInstance.modifiers = []
     processForegroundColorSpy.mockRestore()
     processBackgroundColorSpy.mockRestore()
   })

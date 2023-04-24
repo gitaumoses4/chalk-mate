@@ -1,5 +1,4 @@
 import { HEX_REGEX, RGB_REGEX } from './constants'
-import { Rgb } from '../types'
 import { Chalk } from 'chalk'
 import { colors } from './colors'
 
@@ -11,7 +10,7 @@ export function processBackgroundColor(chalk: Chalk, backgroundColor = ''): Chal
     if (backgroundColor.match(HEX_REGEX)) {
       return chalk.bgHex(backgroundColor)
     } else if (backgroundColor.match(RGB_REGEX)) {
-      const rgb = backgroundColor.split(',').map(Number) as Rgb
+      const rgb = backgroundColor.split(',').map(Number) as [number, number, number]
       return chalk.bgRgb(rgb[0], rgb[1], rgb[2])
     }
   }

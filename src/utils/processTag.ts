@@ -1,11 +1,10 @@
 import { Chalk } from 'chalk'
 import { ALLOWED_MODIFIERS } from './constants'
-import { Attributes } from '../types'
 import { processBackgroundColor } from './processBackgroundColor'
 import { processForegroundColor } from './processForegroundColor'
 
-export function processTag(tagName: string, attributes: Attributes, chalk: Chalk) {
-  chalk = processForegroundColor(chalk, tagName, attributes)
+export function processTag(tagName: string, attributes: any, chalk: Chalk) {
+  chalk = processForegroundColor(chalk, tagName, (attributes.value || '').trim().toLowerCase())
 
   if (Object.keys(attributes).length) {
     chalk = processBackgroundColor(chalk, (attributes.bg || '').trim().toLowerCase())

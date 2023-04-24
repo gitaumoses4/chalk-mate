@@ -7,37 +7,33 @@
   "homepage": "https://github.com/gitaumoses4/chalk-mate",
   "repository": "github:gitaumoses4/chalk-mate",
   "bugs": "https://github.com/gitaumoses4/chalk-mate/issues",
-  "type": "module",
-  "main": "lib/index.js",
-  "unpkg": "dist/index.js",
-  "module": "es/index.js",
-  "types": "types/index.d.ts",
+  "exports": "./dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "files": [
-    "dist",
-    "es",
-    "lib",
-    "types"
+    "dist"
   ],
   "scripts": {
-    "clean": "rimraf lib dist es coverage types",
+    "clean": "rimraf dist",
     "format": "prettier --write \"{src,test}/**/*.{js,ts}\" \"**/*.md\"",
-    "format:check": " prettier --list-different src test",
-    "lint": "eslint --ext js,ts src test",
-    "check-types": "tsc --noEmit",
+    "format:check": " prettier --list-different src",
+    "lint": "eslint --ext js,ts src",
     "test": "jest",
     "test:watch": "npm test -- --watch",
     "test:cov": "npm test -- --coverage",
-    "build": "del-cli dist && tsc",
+    "test:ci": "npm run test:cov",
+    "build": "npm run clean && tsc --project tsconfig.app.json",
     "pretests": "npm run build",
     "prepublishOnly": "npm run clean && npm run check-types && npm run format:check && npm run lint && npm test && npm run build",
     "postpublish": "npm run clean"
   },
   "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
     "chalk": "4.1.2",
     "xml-parse": "^0.4.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.1",
+    "@typescript-eslint/parser": "^5.59.0",
     "del-cli": "^5.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
@@ -46,6 +42,7 @@
     "prettier": "^2.4.1",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
+    "tslib": "^2.5.0",
     "typescript": "^5.0.4"
   },
   "keywords": [

@@ -15,11 +15,23 @@
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
-    "types": ["node", "jest"],
+    "types": ["node"],
     "skipDefaultLibCheck": true,
     "allowJs": true,
     "baseUrl": ".",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "outDir": "dist"
   },
-  "include": ["src"]
+  "ts-node": {
+    "esm": true
+  },
+  "references": [
+    {
+      "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ]
 }

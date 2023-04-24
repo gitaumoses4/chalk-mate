@@ -1,9 +1,9 @@
-import { parseNode } from "./utils/parseNode";
-import { allowSingleQuotes } from "./utils/allowSingleQuotes";
-import { Options } from "chalk";
+import { parseNode } from './utils/parseNode'
+import { allowSingleQuotes } from './utils/allowSingleQuotes'
+import { Options } from 'chalk'
 
-const xml = require("xml-parse");
-const chalk = require("chalk");
+const xml = require('xml-parse')
+const chalk = require('chalk')
 
 /**
  * Create a new instance of chalk-mate with the given chalk options.
@@ -21,15 +21,15 @@ const chalk = require("chalk");
  * @constructor
  */
 export function Instance(options?: Options) {
-  const chalkInstance = new chalk.Instance(options);
+  const chalkInstance = new chalk.Instance(options)
   return function (template: string) {
-    template = allowSingleQuotes(template);
+    template = allowSingleQuotes(template)
 
     return xml
       .parse(template)
-      .map((node) => parseNode(node, chalkInstance))
-      .join("");
-  };
+      .map(node => parseNode(node, chalkInstance))
+      .join('')
+  }
 }
 
 /**
@@ -45,5 +45,5 @@ export function Instance(options?: Options) {
  * @param template The template string to parse.
  */
 export default function (template: string) {
-  return Instance()(template);
+  return Instance()(template)
 }

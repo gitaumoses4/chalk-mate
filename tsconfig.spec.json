@@ -1,0 +1,14 @@
+{
+  "jest": {
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "outDir": "./dist",
+      "module": "commonjs",
+      "types": ["jest", "node"],
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+    },
+  },
+  "include": ["jest.config.ts", "jest.setup.ts", "**/*.test.ts", "**/*.spec.ts", "**/*.d.ts"],
+  "preset": "ts-jest"
+}
