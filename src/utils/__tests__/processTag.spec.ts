@@ -50,10 +50,22 @@ describe('processTag', function () {
     expect(processForegroundColorSpy).toHaveBeenCalledWith(chalkInstance, 'red', '')
   })
 
+  it('should process the foreground color from hex attribute', () => {
+    processTag('hex', { color: '#ff0000' }, chalkInstance as any)
+
+    expect(processForegroundColorSpy).toHaveBeenCalledWith(chalkInstance, 'hex', '#ff0000')
+  })
+
   it('should process the background color if there are attributes', () => {
     processTag('red', { bg: 'red' }, chalkInstance as any)
 
-    expect(processBackgroundColorSpy).toHaveBeenCalledWith(chalkInstance, 'red')
+    expect(processBackgroundColorSpy).toHaveBeenCalledWith(chalkInstance, 'red', 'red')
+  })
+
+  it('should process the background color from hex attribute', () => {
+    processTag('red', { bg: '#ff0000' }, chalkInstance as any)
+
+    expect(processBackgroundColorSpy).toHaveBeenCalledWith(chalkInstance, 'red', '#ff0000')
   })
 
   it('should process allowed modifiers if there are attributes', () => {

@@ -1,9 +1,10 @@
 import { processTag } from './processTag'
 import { Chalk } from 'chalk'
+import { decode } from 'html-entities'
 
 export function parseNode(node: any, chalk: Chalk) {
   if (node.type === 'text') {
-    return node.text
+    return decode(node.text)
   }
 
   if (node.type === 'element') {

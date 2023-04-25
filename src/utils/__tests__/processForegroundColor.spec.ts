@@ -14,18 +14,22 @@ describe('processForegroundColor', function () {
     expect(processForegroundColor(chalk, 'invalid')).toEqual(chalk)
   })
 
-  it('should return the chalk instance if the color is valid', function () {
+  it('should use the color from the tag name', function () {
     expect(processForegroundColor(chalk, 'red')).toEqual('hex-#ff0000')
   })
 
-  it('should use the hex color if it is a valid color', () => {
-    expect(processForegroundColor(chalk, 'hex', '#ff0000')).toEqual('hex-#ff0000')
+  it('should use the color from the color value', () => {
+    expect(processForegroundColor(chalk, 'text', 'red')).toEqual('hex-#ff0000')
+  })
+
+  it('should use color from a hex value', () => {
+    expect(processForegroundColor(chalk, 'text', '#ff0000')).toEqual('hex-#ff0000')
 
     expect(chalk.hex).toHaveBeenCalledWith('#ff0000')
   })
 
-  it('should use the rgb color if it is a valid color', () => {
-    expect(processForegroundColor(chalk, 'rgb', '255,0,0')).toEqual('rgb-255,0,0')
+  it('should use color from rgb value', () => {
+    expect(processForegroundColor(chalk, 'text', '255, 0, 0')).toEqual('rgb-255,0,0')
 
     expect(chalk.rgb).toHaveBeenCalledWith(255, 0, 0)
   })
