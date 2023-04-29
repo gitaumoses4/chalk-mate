@@ -5,7 +5,7 @@
   "author": "Moses Gitau <gitaumoses4@gmail.com> (https://github.com/gitaumoses4)",
   "license": "MIT",
   "homepage": "https://github.com/gitaumoses4/chalk-mate",
-  "repository": "github:gitaumoses4/chalk-mate",
+  "repository": "https://github.com/gitaumoses4/chalk-mate.git",
   "bugs": "https://github.com/gitaumoses4/chalk-mate/issues",
   "exports": "./dist/src/index.js",
   "types": "dist/src/index.d.ts",
@@ -70,5 +70,8 @@
     "logging",
     "command-line",
     "text"
-  ]
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
 }
