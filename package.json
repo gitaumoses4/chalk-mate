@@ -70,8 +70,5 @@
     "logging",
     "command-line",
     "text"
-  ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  }
+  ]
 }
