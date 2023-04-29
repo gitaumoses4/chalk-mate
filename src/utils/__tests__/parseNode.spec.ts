@@ -1,5 +1,6 @@
 import { parseNode } from '../parseNode'
 import { colors } from '../colors'
+import { HTMLElement, TextNode } from 'node-html-parser'
 
 const { Instance } = require('chalk')
 
@@ -8,43 +9,43 @@ const chalk = new Instance({ level: 1 })
 describe('parseNode', function () {
   it('should return the text from a text node', () => {
     const text = 'text'
-    expect(parseNode({ type: 'text', text }, chalk)).toEqual(text)
+    expect(parseNode({ nodeType: 3, rawText: text } as TextNode, chalk)).toEqual(text)
   })
 
   it('should parse html entities from a text node', () => {
     const text = '&lt;tag&gt;'
-    expect(parseNode({ type: 'text', text }, chalk)).toEqual('<tag>')
+    expect(parseNode({ nodeType: 3, rawText: text } as TextNode, chalk)).toEqual('<tag>')
   })
 
   it('should parse child nodes from an element', () => {
     const node = {
-      type: 'element',
+      nodeType: 1,
       tagName: 'tag',
       childNodes: [
-        { type: 'text', text: 'hello' },
+        { nodeType: 3, rawText: 'hello' },
         {
-          type: 'element',
+          nodeType: 1,
           tagName: 'tag',
-          childNodes: [{ type: 'text', text: ' ' }]
+          childNodes: [{ nodeType: 3, rawText: ' ' }]
         },
-        { type: 'text', text: 'world' }
+        { nodeType: 3, rawText: 'world' }
       ]
-    }
+    } as HTMLElement
 
     expect(parseNode(node, chalk)).toEqual('hello world')
   })
 
   it('should process tags an apply the styles', () => {
     const node = {
-      type: 'element',
+      nodeType: 1,
       tagName: 'red',
-      childNodes: [{ type: 'text', text: 'hello world' }],
+      childNodes: [{ nodeType: 3, rawText: 'hello world' }],
       attributes: {
         bold: true,
         underline: true,
         bg: 'yellow'
-      }
-    }
+      } as any
+    } as HTMLElement
 
     expect(parseNode(node, chalk)).toEqual(chalk.hex(colors.red).bgHex(colors.yellow).bold.underline('hello world'))
   })

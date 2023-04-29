@@ -1,6 +1,7 @@
 import { parseNode } from './utils/parseNode'
 import { allowSingleQuotes } from './utils/allowSingleQuotes'
 import { Options } from 'chalk'
+import parse from 'node-html-parser'
 
 const xml = require('xml-parse')
 const chalk = require('chalk')
@@ -25,10 +26,9 @@ export function Instance(options?: Options) {
   return function (template: string) {
     template = allowSingleQuotes(template)
 
-    return xml
-      .parse(template)
-      .map(node => parseNode(node, chalkInstance))
-      .join('')
+    const parsed = parse(template)
+
+    return parsed.childNodes.map(node => parseNode(node, chalkInstance)).join('')
   }
 }
 

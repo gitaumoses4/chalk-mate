@@ -8,7 +8,7 @@ export function processTag(tagName: string, attributes: any = {}, chalk: Chalk) 
   chalk = processBackgroundColor(chalk, tagName, (attributes.bg || '').trim().toLowerCase())
 
   for (const modifier of ALLOWED_MODIFIERS) {
-    if (attributes[modifier]) {
+    if (attributes[modifier] != undefined) {
       chalk = chalk[modifier]
     }
   }
