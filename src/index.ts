@@ -3,7 +3,6 @@ import { allowSingleQuotes } from './utils/allowSingleQuotes'
 import { Options } from 'chalk'
 import parse from 'node-html-parser'
 
-const xml = require('xml-parse')
 const chalk = require('chalk')
 
 /**

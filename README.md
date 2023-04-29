@@ -6,6 +6,8 @@
 [![GitHub issues](https://img.shields.io/github/issues/gitaumoses4/chalk-mate)](https://github.com/gitaumoses4/chalk-mate/issues)
 [![GitHub license](https://img.shields.io/github/license/gitaumoses4/chalk-mate)](https://github.com/gitaumoses4/chalk-mate/blob/master/LICENSE.md)
 
+[![NPM](https://nodei.co/npm/chalk-mate.png)](https://nodei.co/npm/chalk-mate/) <br />
+
 
 
 ![illustration](screenshots/illustration.png)
@@ -81,7 +83,7 @@ CSS color names are supported. See [CSS Color Names](https://www.w3schools.com/c
 ### RGB Color Codes
 
 ```html
-<white color="255, 0, 0">Hello World</white>
+<white bg="255, 0, 0">Hello World</white>
 ```
 
 ## Text Styles
