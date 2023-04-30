@@ -32,6 +32,15 @@ export function Instance(options?: Options) {
 }
 
 /**
+ * Pass a template string to this function, and it will return a string with the colors stripped.
+ *
+ * @param template
+ */
+export function stripColors(template: string) {
+  return Instance({ level: 0 })(template)
+}
+
+/**
  * Pass a template string to this function, and it will return a string with the colors applied.
  *
  * @example
@@ -43,6 +52,8 @@ export function Instance(options?: Options) {
  *
  * @param template The template string to parse.
  */
-export default function (template: string) {
+function chalkMate(template: string) {
   return Instance()(template)
 }
+
+export default chalkMate

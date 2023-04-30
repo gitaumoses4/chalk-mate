@@ -1,6 +1,6 @@
 {
   "name": "chalk-mate",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An extension of the Chalk.js library that allows users to create stylized text using HTML templates.",
   "author": "Moses Gitau <gitaumoses4@gmail.com> (https://github.com/gitaumoses4)",
   "license": "MIT",

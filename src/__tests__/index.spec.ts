@@ -55,3 +55,13 @@ describe('chalkMate', function () {
     )
   })
 })
+
+describe('stripColors', function () {
+  it('should strip colors', () => {
+    const chalkMate = require('../index').stripColors
+
+    expect(
+      chalkMate(`<red bg='yellow' bold>The quick brown fox jumped <green bg="white">over</green> the lazy dogs.</red>`)
+    ).toEqual(`The quick brown fox jumped over the lazy dogs.`)
+  })
+})
