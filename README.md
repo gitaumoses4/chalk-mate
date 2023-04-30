@@ -132,6 +132,17 @@ You can combine styles and colors.
 <bg-red color="white" underline>Hello <bold italic color="blue" bg="white">World</bold></bg-red>
 ```
 
+### Removing Styles and Colors
+
+You can print the text without styles and colors by using the `stripColors` function.
+
+```jsx
+import { stripColors } from 'chalk-mate'
+
+console.log(stripColors(`<red>Hello</red> <green>World</green>`))
+```
+
+
 # License (MIT)
 
 Copyright &copy; Moses Gitau
